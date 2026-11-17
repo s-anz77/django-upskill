@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block title %}Главная{% endblock %}
+
+{% block main %}
+<div class="home-page-content">
+    <div class="presentation-section-bg">
+        <div class="presentation-section">
+            <div class="presentation-text">
+                <h1>Учиться программированию легко и просто!</h1>
+                <p>На нашем сайте вы найдёте полноценные курсы по многим направлениям в IT сфере от основ до продвинутого уровня. Учитесь и оттачивайте навыки вместе с UpSkill!</p>
+            </div>
+            <div class="presentation-sticker">
+                <img src="{% static 'images/full-stack-illustration.svg' %}" alt="Разработчик за ноутбуком">
+            </div>
+        </div>
+    </div>
+    <div class="courses-section-bg">
+        <div class='courses-section'>
+            <div class="section-heading">
+                <h2>Видеокурсы</h2>
+                <a href="#">
+                    <small>Все курсы</small>
+                    <span>→</span>
+                </a>
+            </div>
+            <div class='courses-grid'>
+                {% for course in courses %}
+                    <div class="course-card">
+                        <a href="{{ course.get_absolute_url }}">
+                            <div class='card-image'>
+                                {% if course.image %}
+                                    <img src="{{ course.image.url }}" alt="{{ course.title }}">
+                                {% else %}
+                                    <img src="{{ course.image.url }}" alt="{{ course.title }}">
+                                {% endif %}
+                            </div>
+                        </a>
+                        <div class='card-body'>
+                            <a class="tag" href="#">
+                                <div class="circle"></div>
+                                <span>{{ course.category|upper }}</span>
+                            </a>
+                            <h3>{{ course.title }}</h3>
+                            <p>{{ course.description }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

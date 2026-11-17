@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block title %}{{ lesson.title }}{% endblock %}
+
+{% block main %}
+<div class="course-detail-page">
+    <div class="page-header {{ object.slug }}">
+        <div class="page-header-container">
+            <div class="page-header-info">
+                <h1>{{ course.title }}</h1>
+                <h2>#{{ lesson.number }}: {{ lesson.title }}</h2>
+                <p>{{ lesson.description }}</p>
+            </div>
+            <div class="page-header-sticker">
+                <img src="{{ course.icon.url }}" alt="">
+            </div>
+        </div>
+    </div>
+    <div class="page-main-bg">
+        <div class="page-main">
+            <div class="page-sections">
+                <div class="section-video section {{ object.slug }}">
+                    <iframe src="https://www.youtube.com/embed/{{ lesson.video }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                <div class="section-1 section {{ object.slug }}">
+                    <h1>Информация к уроку</h1>
+                    <h3>1. Lorem, ipsum dolor.</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa culpa rerum, eaque fugit deserunt ullam expedita laudantium cum assumenda accusantium, sequi quisquam autem perspiciatis nulla labore nobis velit reiciendis provident at sint dolores. Repellendus quas voluptas ipsa quo obcaecati minus nam fuga quaerat. Facere quas ipsam eaque? Doloremque quos itaque aperiam non harum corporis dolorem culpa autem tempora, quisquam laborum odit minus quidem iusto? Repellendus aperiam tempora numquam nam rerum corrupti sequi nihil rem odio? Blanditiis ex nihil voluptatem? Est!</p>
+                    <h3>2. Lorem, ipsum dolor.</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis doloremque labore quo delectus exercitationem magnam fugiat esse accusantium tempora suscipit placeat quaerat incidunt aliquid ex quisquam voluptas obcaecati dolorum voluptatem, vel enim aspernatur vero consectetur. Ad doloremque fuga repellendus totam deserunt ipsam officia accusamus nostrum accusantium illo iusto ratione quis aliquid id nemo repudiandae quos aspernatur voluptate consequuntur, et voluptatibus tempore blanditiis? Dolores laboriosam numquam voluptatum accusantium vitae id praesentium ex temporibus ut tempore molestiae error, iste inventore dicta at assumenda aut suscipit quaerat quis corrupti asperiores! Similique reiciendis eius nam odio velit? Repudiandae, cumque itaque minus placeat explicabo earum!</p>
+                    <h3>3. Lorem, ipsum dolor.</h3>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptas facere nemo veniam unde deserunt possimus, assumenda tempora aliquid iste doloribus porro sunt inventore quos nam beatae dolorem sequi nisi debitis dolor itaque ipsum dignissimos, quo ducimus. Hic, voluptatem? Illum consectetur voluptates, illo et expedita assumenda eaque ratione distinctio officiis amet?</p>
+                </div>
+            </div>
+            <div class="page-aside section {{ object.slug }}">
+                <div class="aside-title">
+                    <h2>Навигация по курсу</h2>
+                </div>
+                <div class="lessons-list">
+                    <a href="{{ course.get_absolute_url }}">
+                        <div class="lesson">
+                        <h4>О курсе</h4>
+                        </div>
+                    </a>
+                    {% for el in lessons %}
+                        <a href="{{ el.get_absolute_url }}">
+                            <div class="lesson {% if request.resolver_match.kwargs.lesson_slug == el.slug %}active{% endif %}">
+                            <h4>{{ el.number }}: {{ el.title }}</h4>
+                            </div>
+                        </a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

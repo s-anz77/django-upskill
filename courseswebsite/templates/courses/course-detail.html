@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block title %}{{ object.title }}{% endblock %}
+
+{% block main %}
+<div class="course-detail-page">
+    <div class="page-header {{ object.slug }}">
+        <div class="page-header-container">
+            <div class="page-header-info">
+                <h1>{{ object.title }}</h1>
+                <p>{{ object.description }}</p>
+            </div>
+            <div class="page-header-sticker">
+                <img src="{{ course.icon.url }}" alt="">
+            </div>
+        </div>
+    </div>
+    <div class="page-main-bg">
+        <div class="page-main">
+            <div class="page-sections">
+                <div class="presentation-section section {{ object.slug }}">
+                    <img src="{{ object.image.url }}" alt="">
+                    <div class="presentation-text">
+                        <h2>Приветствуем вас на курсе</h2>
+                        <h1>{{ course.title }}</h1>
+                    </div>
+                </div>
+                <div class="section-1 section {{ object.slug }}">
+                    <h1>Подробнее о курсе</h1>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa culpa rerum, eaque fugit deserunt ullam expedita laudantium cum assumenda accusantium, sequi quisquam autem perspiciatis nulla labore nobis velit reiciendis provident at sint dolores. Repellendus quas voluptas ipsa quo obcaecati minus nam fuga quaerat. Facere quas ipsam eaque? Doloremque quos itaque aperiam non harum corporis dolorem culpa autem tempora, quisquam laborum odit minus quidem iusto? Repellendus aperiam tempora numquam nam rerum corrupti sequi nihil rem odio? Blanditiis ex nihil voluptatem? Est!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis doloremque labore quo delectus exercitationem magnam fugiat esse accusantium tempora suscipit placeat quaerat incidunt aliquid ex quisquam voluptas obcaecati dolorum voluptatem, vel enim aspernatur vero consectetur. Ad doloremque fuga repellendus totam deserunt ipsam officia accusamus nostrum accusantium illo iusto ratione quis aliquid id nemo repudiandae quos aspernatur voluptate consequuntur, et voluptatibus tempore blanditiis? Dolores laboriosam numquam voluptatum accusantium vitae id praesentium ex temporibus ut tempore molestiae error, iste inventore dicta at assumenda aut suscipit quaerat quis corrupti asperiores! Similique reiciendis eius nam odio velit? Repudiandae, cumque itaque minus placeat explicabo earum!</p>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptas facere nemo veniam unde deserunt possimus, assumenda tempora aliquid iste doloribus porro sunt inventore quos nam beatae dolorem sequi nisi debitis dolor itaque ipsum dignissimos, quo ducimus. Hic, voluptatem? Illum consectetur voluptates, illo et expedita assumenda eaque ratione distinctio officiis amet?</p>
+                </div>
+                <div class="section-1 section {{ object.slug }}">
+                    <h1>Немного истории</h1>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur ad quod neque nisi quidem quae tempore temporibus. Hic possimus nisi neque? Obcaecati animi nobis, quibusdam non eaque rerum quo voluptates, provident consequatur corporis ipsam, dolores quis officiis. Quisquam exercitationem sit nisi magnam earum necessitatibus non dolorem excepturi ipsum debitis qui, autem consectetur asperiores cumque dignissimos. Delectus eligendi ducimus illo soluta incidunt quos similique perspiciatis hic odio modi quisquam alias minima cupiditate, nulla iusto aperiam id et eaque totam vitae sapiente ipsam repellendus, nihil doloribus? Nostrum rem laborum beatae aliquam nesciunt esse eaque veritatis perferendis ut ratione voluptatem hic non adipisci delectus, in nobis quaerat commodi praesentium odio accusantium! Dolorum vero iste corrupti expedita tempore quod accusantium. Ducimus, adipisci. Est corporis qui ad doloremque. Impedit doloribus neque eligendi earum accusantium? Non, ipsum nisi architecto cumque laborum perspiciatis, nam quis molestiae sed officia iure fugit voluptates beatae optio voluptatum eligendi adipisci, minus asperiores molestias ullam quae in iste neque. Fuga aperiam, id quisquam exercitationem dignissimos tempore vero quod eos perspiciatis vel ut omnis, provident mollitia porro sint tenetur dolorum dolor quis quia, ipsa reprehenderit doloribus deserunt totam rerum. Minus consectetur perferendis, enim atque dolorum officiis ipsa sunt, maiores voluptates autem animi placeat.</p>
+                </div>
+            </div>
+            <div class="page-aside section {{ object.slug }}">
+                <div class="aside-title">
+                    <h2>Навигация по курсу</h2>
+                </div>
+                <div class="lessons-list">
+                    <a href="{{ course.get_absolute_url }}">
+                        <div class="lesson active">
+                        <h4>О курсе</h4>
+                        </div>
+                    </a>
+                    {% for el in lessons %}
+                        <a href="{{ el.get_absolute_url }}">
+                            <div class="lesson">
+                            <h4>{{ el.number }}: {{ el.title }}</h4>
+                            </div>
+                        </a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

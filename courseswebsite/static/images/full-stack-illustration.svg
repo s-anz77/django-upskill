@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">Full Stack Development</title>
+  <desc id="desc">Иллюстрация разработчицы за ноутбуком среди окон с кодом и символом фигурных скобок</desc>
+
+  <!-- Floating code windows -->
+  <rect x="55" y="95" width="174" height="119" rx="10" fill="#0F2423" stroke="#43B19A" stroke-width="4"/>
+  <circle cx="72" cy="111" r="4" fill="#43B19A"/>
+  <circle cx="88" cy="111" r="4" fill="#3B8C7B"/>
+  <circle cx="104" cy="111" r="4" fill="#2C685B"/>
+  <path d="M69 127h61m8 0h23m9 0h28M82 143h92M69 159h32m9 0h45m9 0h35M82 175h51m8 0h37M69 191h91"
+        fill="none" stroke="#3B8C7B" stroke-linecap="round" stroke-width="4"/>
+
+  <rect x="321" y="92" width="164" height="155" rx="12" fill="#1A3D3C" stroke="#3B8C7B" stroke-width="3"/>
+  <circle cx="338" cy="109" r="4" fill="#F0FFFC"/>
+  <circle cx="354" cy="109" r="4" fill="#F0FFFC"/>
+  <circle cx="370" cy="109" r="4" fill="#F0FFFC"/>
+  <path d="m376 151-22 24 22 24m38-48 22 24-22 24m-10-49-12 51"
+        fill="none" stroke="#F0FFFC" stroke-linecap="round" stroke-linejoin="round" stroke-width="6"/>
+
+  <!-- Braces badge -->
+  <rect x="190" y="59" width="76" height="62" rx="12" fill="#43B19A"/>
+  <path d="M214 73c-7 0-7 7-7 12v5c0 5-2 7-7 8 5 1 7 3 7 8v5c0 5 0 12 7 12m28-55c7 0 7 7 7 12v5c0 5 2 7 7 8-5 1-7 3-7 8v5c0 5 0 12-7 12"
+        fill="none" stroke="#060E0E" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+
+  <!-- Person -->
+  <path d="M229 276c8-34 33-54 68-59l37-4c34 3 62 18 79 47l38 71-58 27-19-38 3 85H211l18-129Z" fill="#3B8C7B"/>
+  <path d="M260 246c-20 15-32 41-37 78l-13 59h58l22-72-30-65Z" fill="#2C685B"/>
+  <path d="M365 242c20 10 34 29 44 52l36 61-42 20-42-65 4-68Z" fill="#43B19A"/>
+  <path d="M281 202h43v55c0 12-9 21-21 21s-22-9-22-21v-55Z" fill="#3B8C7B"/>
+  <path d="M269 157c0-23 18-41 41-41h10c24 0 42 18 42 42v34c0 26-18 43-43 43h-8c-24 0-42-18-42-43v-35Z" fill="#F0FFFC"/>
+  <path d="M268 170c-10-27 2-55 23-66 17-9 40-7 54 5 12 10 18 24 17 43-7-7-14-10-22-12-6 13-19 19-35 17-5 16-18 24-37 25v-12Z" fill="#2C685B"/>
+  <path d="M354 163c12-2 20 6 19 17-1 10-8 17-18 17" fill="#F0FFFC"/>
+  <path d="M291 181h9m22 0h9m-31 7-3 14 8 2m-3 10c7 5 16 5 23 0"
+        fill="none" stroke="#060E0E" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"/>
+  <circle cx="298" cy="181" r="2.4" fill="#060E0E"/>
+  <circle cx="327" cy="181" r="2.4" fill="#060E0E"/>
+
+  <!-- Desk and laptop -->
+  <path d="M31 438h451v14H31z" fill="#2C685B"/>
+  <path d="M70 265h216l12 153H82L70 265Z" fill="#43B19A"/>
+  <path d="M158 405h37l5 25h-49l7-25Z" fill="#1A3D3C"/>
+  <path d="M112 430h210l10 9H103l9-9Z" fill="#3B8C7B"/>
+  <path d="M334 389c24-4 44-11 59-21l56-15 16 35c5 13-3 28-17 31-26 6-73 5-117 0l3-30Z" fill="#2C685B"/>
+  <path d="M254 395c17-1 35-3 51-6l31 0-3 30-87-1 8-23Z" fill="#3B8C7B"/>
+  <path d="M245 418h22m9 0h21m9 0h21m9 0h18" stroke="#060E0E" stroke-linecap="round" stroke-width="3"/>
+</svg>
