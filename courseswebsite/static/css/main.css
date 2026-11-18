@@ -49,7 +49,7 @@ header .header {
     height: 100%;
     width: var(--width-main);
     display: grid;
-    grid-template-columns: 2fr 7fr 2fr;
+    grid-template-columns: 1fr 2fr 1fr;
 }
 
 header .header .logo {
@@ -76,43 +76,124 @@ header .header .navbar {
     gap: 1em;
 }
 
-header .header .navbar a {
+header .header a.lines {
     position: relative;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 400;
+    color: var(--color-text-muted);
 }
 
-header .header .navbar a::before, 
-header .header .navbar a::after {
+header .header a.lines::before, 
+header .header a.lines::after {
     content: "";
     position: absolute;
     left: -4px;
     right: -4px;
     bottom: -5px;
-    height: 1px;
-    background: var(--color-primary);
+    height: 3px;
+    background: linear-gradient(to right, var(--color-primary), var(--color-surface), var(--color-primary));
+    opacity: 0;
     transition: all .25s ease;
 }
 
-header .header .navbar a:hover::after {
-    background: linear-gradient(to right, var(--color-primary), var(--color-text), var(--color-primary));
+header .header a.lines::before {top: -5px;}
+
+header .header a.lines:hover,
+header .header a.lines.active {
+    color: var(--color-text);
+}
+
+header .header a.lines:hover::after,
+header .header a.lines.active::after,
+header .header a.lines.active::before,
+header .header a.lines:hover::before {
+    opacity: 1;
     transition: all .25s ease;
 }
 
-header .header .navbar a::before {
-    content: "";
+header .header .menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+}
+
+header .header .menu a {
+    position: relative;
+    font-size: 14px;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+}
+
+header .header .menu svg {
+    fill: var(--color-text-muted);
+    height: 20px;
+    width: auto;
+    border: 1px solid var(--color-text-muted);
+    padding: 2px;
+    border-radius: 9px;
+    transition: all .25s ease;
+}
+
+header .header .menu a:hover svg,
+header .header .menu a.active:not(.lines) svg {
+    border: 1px solid var(--color-text);
+    fill: var(--color-text);
+    transition: all .25s ease;
+}
+
+header .header .menu form button {
+    background-color: rgba(255, 255, 255, 0);
+    border: none;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+header .header .menu form button svg {
+    height: 18px;
+    width: auto;
+    padding: 3px;
+    
+}
+
+header .header .menu form button:hover svg {
+    background-color: rgba(204, 54, 54, 0.612);
+    cursor: pointer;
+    fill: var(--color-text);
+    border: 1px solid var(--color-text);
+    transition: all .25s ease;
+}
+
+/*-------------------------------ВСПЛЫВАЮЩИЕ ПОДСКАЗКИ----------------------------*/
+
+a.hint::after,
+#logoutbut.hint::after {
+    content: attr(data-tooltip);
     position: absolute;
-    left: -4px;
-    right: -4px;
-    top: -5px;
-    height: 1px;
-    background: var(--color-primary);
-    transition: all .25s ease;
+    left: 50%;
+    top: calc(100% + 7px);
+    transform: translate(-50%, 4px);
+    padding: 3px 5px;
+    border-radius: 6px;
+    background: var(--primary);
+    color: var(--color-text);
+    border: 1px solid var(--color-text);
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .2s ease, transform .2s ease;
+    pointer-events: none;
+    z-index: 1000;
 }
 
-header .header .navbar a:hover::before {
-    background: linear-gradient(to right, var(--color-primary), var(--color-text), var(--color-primary));
-    transition: all .25s ease;
+a.hint:hover::after,
+#logoutbut.hint:hover::after {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, 0);
 }
 
 /*--------------------------------------------------------------------------------*/
@@ -238,7 +319,7 @@ main .home-page-content {
     width: 100%;
 }
 
-main .home-page-content .presentation-section-bg {
+.presentation-section-bg {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -248,7 +329,7 @@ main .home-page-content .presentation-section-bg {
     overflow: hidden;
 }
 
-main .home-page-content .presentation-section-bg .presentation-section {
+.presentation-section-bg .presentation-section {
     width: var(--width-main);
     height: 200px;
     display: grid;
@@ -256,7 +337,7 @@ main .home-page-content .presentation-section-bg .presentation-section {
     
 }
 
-main .home-page-content .presentation-section-bg .presentation-section .presentation-text {
+.presentation-section-bg .presentation-section .presentation-text {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -266,18 +347,18 @@ main .home-page-content .presentation-section-bg .presentation-section .presenta
     transition: right 1s ease;
 }
 
-body:hover main .home-page-content .presentation-section-bg .presentation-section .presentation-text {
+body:hover .presentation-section-bg .presentation-section .presentation-text {
     right: 0px;
     transition: right 1s ease-out;
 }
 
-main .home-page-content .presentation-section-bg .presentation-section .presentation-sticker {
+.presentation-section-bg .presentation-section .presentation-sticker {
     display: flex;
     justify-content: end;
     align-items: end;
 }
 
-main .home-page-content .presentation-section-bg .presentation-section .presentation-sticker img {
+.presentation-section-bg .presentation-section .presentation-sticker img {
     height: 200px;
     width: auto;
     position: relative;
@@ -285,7 +366,7 @@ main .home-page-content .presentation-section-bg .presentation-section .presenta
     transition: top 1s ease;
 }
 
-main .home-page-content:hover .presentation-section-bg .presentation-section .presentation-sticker img {
+body:hover .presentation-section-bg .presentation-section .presentation-sticker img {
     top:24px;
     transition: top 1s ease-out;
 }
@@ -595,6 +676,259 @@ main .home-page-content .courses-section-bg .courses-section .section-heading a:
 /*--------------------------------------------------------------------------------*/
 
 /*--------------------------------------------------------------------------------*/
+/*----------------------------------PROFILE PAGE----------------------------------*/
+/*--------------------------------------------------------------------------------*/
+
+.profile-section-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.profile-section-container .profile-section {
+    width: var(--width-main);
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-panel);
+    border-radius: 9px 0;
+    margin-top: 1em;
+    box-sizing: border-box;
+    padding: 1em;
+    margin-bottom: 1em;
+}
+
+.profile-section-container .profile-section .section-info {
+    background-color: var(--color-surface);
+    width: 100%;
+    margin-bottom: 1em;
+    box-sizing: border-box;
+    padding: 1em;
+    border-radius: 9px 0;
+    display: flex;
+    gap: 1em;
+}
+
+.profile-section-container .profile-section .section-info .profile-image {
+    box-sizing: border-box;
+    height: 150px;
+    width: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0fffc77;
+    border-radius: 9px 0;
+}
+
+.profile-section-container .profile-section .section-info .profile-image img {
+    height: 130px;
+    width: auto;
+    border-radius: 9px 0;
+}
+
+.profile-section-container .profile-section .section-info .vert-line {
+    height: 100%;
+    width: 4px;
+    background-color: var(--color-panel);
+    border-radius: 9px;
+}
+
+.profile-section-container .profile-section .section-info .profile-info {
+    width: 56%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+}
+
+.profile-section-container .profile-section .section-info .profile-info h2 {
+    font-weight: 500;
+    position: absolute;
+    top: 0;
+}
+
+.profile-section-container .profile-section .section-info .profile-info b {
+    font-weight: 500;
+}
+
+.profile-section-container .profile-section .section-info .profile-subscription {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+}
+
+.profile-section-container .profile-section .section-info .profile-subscription h2 {
+    font-weight: 500;
+}
+
+.profile-section-container .profile-section .section-update {
+    background-color: var(--color-surface);
+    width: 100%;
+    box-sizing: border-box;
+    padding: 1em;
+    border-radius: 9px 0;
+}
+
+.profile-section-container .profile-section .section-update h2 {
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.form-1 {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.form-1 .helptext {
+    color: var(--color-text-muted);
+    font-size: 14px;
+}
+
+
+.form-1 p {
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-1 p label {
+    font-weight: 400;
+}
+
+.form-1 p label.privacy-label {
+    display: flex;
+}
+
+.form-1 p input {
+    width: 100%;
+    padding: 8px;
+    border-radius: 9px 0;
+    border: none;
+    box-sizing: border-box;
+    margin-top: 6px;
+    background-color: var(--color-text-muted);
+    font-weight: 500;
+    color: var(--color-primary);
+}
+
+.form-1 p input:focus {
+    border: none;
+    outline: none;
+    box-shadow: 0px 0px 10px 0px var(--color-accent-bright);
+    transform: scale(1.01);
+    transition: all .25s ease;
+}
+
+#id_img {
+    width: auto;
+}
+
+#id_sex {
+    background-color: var(--color-text-muted);
+    color: var(--color-primary);
+    padding: 8px;
+    border-radius: 9px 0;
+    font-weight: 500;
+    margin-top: 4px;
+}
+
+#id_privacy {
+    height: 16px;
+    width: auto;
+    margin-right: 4px;
+    margin-top: 2px;
+}
+
+.form-1 button {
+    background-color: var(--color-text-muted);
+    color: var(--color-text);
+    padding: 8px;
+    border: none;
+    border-radius: 9px 0;
+    font-weight: 500;
+    color: var(--color-primary);
+}
+
+.form-1 .error-message {
+    margin-top: 4px;
+    color: var(--color-alert);
+}
+
+/*--------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------*/
+
+/*--------------------------------------------------------------------------------*/
+/*---------------------------------REGISTER PAGE----------------------------------*/
+/*--------------------------------------------------------------------------------*/
+
+.register-page {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.register-section-container {
+    width: var(--width-main);
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-panel);
+    border-radius: 9px 0;
+    margin-top: 1em;
+    box-sizing: border-box;
+    padding: 1em;
+    margin-bottom: 1em;
+}
+
+.register-section-container .section-register {
+    background-color: var(--color-surface);
+    width: 100%;
+    box-sizing: border-box;
+    padding: 1em;
+    border-radius: 9px 0;
+}
+
+.register-section-container .section-register h1 {
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+#regBut {
+    margin: 4px 0 8px 0;
+    background: linear-gradient(to right, var(--color-surface), var(--color-accent-dark), var(--color-surface));
+    color: var(--color-text);
+    border: 1px solid var(--color-text-muted);
+    transition: all .25s ease;
+}
+
+#regBut:hover {
+    cursor: pointer;
+    color: var(--color-text);
+    border: 1px solid var(--color-text);
+    transform: scale(1.01);
+    box-shadow: 0px 0px 10px 0px var(--color-accent-bright);
+    transition: all .25s ease;
+}
+
+span.altbut {
+    width: 500px;
+}
+
+span.altbut a {
+    font-weight: 500;
+}
+
+span.altbut a:hover {
+    color: var(--color-accent);
+    transition: all .25s ease;
+}
+
+/*--------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------*/
+
+/*--------------------------------------------------------------------------------*/
 /*-------------------------------------FOOTER-------------------------------------*/
 /*--------------------------------------------------------------------------------*/
 
@@ -603,6 +937,7 @@ footer {
     width: 100%;
     justify-content: center;
     background-color: var(--color-primary);
+    border-top: 10px solid var(--color-panel);
 }
 
 footer .footer-container {

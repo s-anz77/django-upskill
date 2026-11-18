@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="23.27 23.27 465.46 465.46" role="img" aria-labelledby="title desc">
+  <title id="title">Вход в аккаунт</title>
+  <desc id="desc">Карточка авторизации с аватаром, полем пароля и символом входа</desc>
+
+  <!-- Background accents -->
+  <g transform="translate(288 -27)">
+  <circle cx="117" cy="137" r="54" fill="#2C685B"/>
+  <path d="M92 137h43m-15-15 15 15-15 15" fill="none" stroke="#43B19A" stroke-linecap="round" stroke-linejoin="round" stroke-width="6" transform="translate(113.5 137) scale(1.5) translate(-113.5 -137)"/>
+  </g>
+  <g transform="translate(-272 -23)">
+  <circle cx="385" cy="130" r="54" fill="#3B8C7B"/>
+  <g transform="translate(0 -7)">
+  <path d="M365 130v-10a20 20 0 0 1 40 0v10m-44 0h48v39h-48z" fill="none" stroke="#2C685B" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"/>
+  <circle cx="385" cy="148" r="4" fill="#2C685B"/>
+  <path d="M385 152v7" stroke="#2C685B" stroke-linecap="round" stroke-width="5"/>
+  </g>
+  </g>
+
+  <!-- Login card -->
+  <rect x="111" y="111" width="290" height="318" rx="24" fill="#0F2423" stroke="#43B19A" stroke-width="5"/>
+  <path d="M111 135a24 24 0 0 1 24-24h242a24 24 0 0 1 24 24v34H111v-34Z" fill="#1A3D3C"/>
+  <circle cx="138" cy="143" r="5" fill="#43B19A"/>
+  <circle cx="156" cy="143" r="5" fill="#3B8C7B"/>
+  <circle cx="174" cy="143" r="5" fill="#2C685B"/>
+  <path d="M333 143h42" stroke="#3B8C7B" stroke-linecap="round" stroke-width="5"/>
+
+  <!-- User avatar -->
+  <circle cx="256" cy="218" r="43" fill="#2C685B"/>
+  <circle cx="256" cy="207" r="17" fill="#F0FFFC"/>
+  <path d="M222 250c4-20 17-30 34-30s30 10 34 30" fill="#43B19A"/>
+
+  <!-- Credentials -->
+  <rect x="157" y="278" width="198" height="39" rx="9" fill="#1A3D3C" stroke="#2C685B" stroke-width="2"/>
+  <circle cx="177" cy="292" r="7" fill="none" stroke="#43B19A" stroke-width="3"/>
+  <path d="M164 309c1-7 6-10 13-10s12 3 13 10" fill="none" stroke="#43B19A" stroke-linecap="round" stroke-width="3"/>
+  <path d="M203 297h119" stroke="#3B8C7B" stroke-linecap="round" stroke-width="5"/>
+
+  <rect x="157" y="329" width="198" height="39" rx="9" fill="#1A3D3C" stroke="#2C685B" stroke-width="2"/>
+  <circle cx="177" cy="348" r="3" fill="#43B19A"/>
+  <circle cx="190" cy="348" r="3" fill="#43B19A"/>
+  <circle cx="203" cy="348" r="3" fill="#43B19A"/>
+  <circle cx="216" cy="348" r="3" fill="#43B19A"/>
+  <circle cx="229" cy="348" r="3" fill="#43B19A"/>
+  <circle cx="242" cy="348" r="3" fill="#43B19A"/>
+  <path d="M260 348h62" stroke="#3B8C7B" stroke-linecap="round" stroke-width="5"/>
+
+  <!-- Sign in action -->
+  <rect x="157" y="385" width="198" height="14" rx="7" fill="#2C685B"/>
+  <path d="M226 392h60m-9-5 9 5-9 5" fill="none" stroke="#F0FFFC" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+
+  <!-- Grounding shadow -->
+  <path d="M72 458h368" stroke="#3B8C7B" stroke-linecap="round" stroke-width="8"/>
+</svg>

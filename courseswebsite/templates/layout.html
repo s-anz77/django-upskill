@@ -21,11 +21,33 @@
                 <a href='/'><span>UpSkill</span></a>
             </div>
             <div class="navbar">
-                <a href="">ГЛАВНАЯ</a>
-                <a href="#">ВИДЕОКУРСЫ</a>
-                <a href="#">ПРО НАС</a>
+                <a href="{% url 'home' %}" class='lines {% if request.resolver_match.url_name == 'home' %}active{% endif %}'>ГЛАВНАЯ</a>
+                <a href="#" class='lines'>ВИДЕОКУРСЫ</a>
+                <a href="#" class='lines'>ПРО НАС</a>
+                {% if user.is_superuser %}
+                    <a href="/admin/" class='lines'>АДМИНКА</a>
+                {% endif %}
             </div>
-            <div class="menu"></div>
+            <div class="menu">
+                {% if not user.is_authenticated %}
+                    <a href="{% url 'reg' %}" class='lines {% if request.resolver_match.url_name == 'reg' %}active{% endif %}'>РЕГИСТРАЦИЯ</a>
+                    
+                    <a id='loginbut' data-tooltip="Войти в аккаунт" href="{% url 'user' %}" class='hint {% if request.resolver_match.url_name == 'user' %}active{% endif %}'>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="24px" width="24px"><path d="M12,21V19h7V5H12V3h7q0.83,0 1.41,0.59T21,5V19q0,0.82-0.59,1.41T19,21H12Zm-2-4L8.63,15.55L11.18,13H3V11h8.18L8.63,8.45L10,7l5,5l-5,5Z"/></svg>
+                    </a>
+                {% else %}
+                    <a id='profilebut' data-tooltip="Профиль" href="{% url 'profile' %}" class='hint {% if request.resolver_match.url_name == 'profile' %}active{% endif %}'>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 26" height="26px" width="26px" fill="hsl(0, 0%, 48%)"><g transform="scale(1.1)"><path d="M9.18,10.83Q8,9.65 8,8T9.18,5.18T12,4t2.83,1.18T16,8t-1.17,2.82T12,12T9.18,10.83ZM4,20V17.2q0-0.85 0.44-1.56q0.44-0.71 1.16-1.09q1.55-0.78 3.15-1.16T12,13t3.25,0.39t3.15,1.16q0.72,0.38 1.16,1.09T20,17.2V20H4Zm2-2H18V17.2q0-0.27-0.14-0.5q-0.14-0.22-0.36-0.35q-1.35-0.68-2.72-1.01T12,15T9.23,15.34T6.5,16.35Q6.28,16.48 6.14,16.7Q6,16.93 6,17.2V18Zm7.41-8.59Q14,8.82 14,8T13.41,6.59T12,6T10.59,6.59Q10,7.18 10,8t0.59,1.41T12,10t1.41-0.59ZM12,8Zm0,10Z"/></g></svg>
+                    </a>
+
+                    <form action='{% url 'exit' %}' method='POST'>
+                        {% csrf_token %}
+                        <button id='logoutbut' class='hint' data-tooltip="Выйти из аккаунта" type='submit'>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="24px" width="24px"><path d="M5,21q-0.83,0-1.41-0.59T3,19V5Q3,4.17 3.59,3.59T5,3h7V5H5V19h7v2H5Zm11-4l-1.38-1.45L17.18,13H9V11h8.18L14.63,8.45L16,7l5,5l-5,5Z"/></svg>
+                        </button>
+                    </form>        
+                {% endif %}
+            </div>
         </div>
     </header>
 

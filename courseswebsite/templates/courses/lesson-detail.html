@@ -19,20 +19,27 @@
     </div>
     <div class="page-main-bg">
         <div class="page-main">
-            <div class="page-sections">
-                <div class="section-video section {{ object.slug }}">
-                    <iframe src="https://www.youtube.com/embed/{{ lesson.video }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <div class="page-sections">
+                    {% if course.is_free or user.profile.sub_plan == 'full' %}
+                        <div class="section-video section {{ object.slug }}">
+                            <iframe src="https://www.youtube.com/embed/{{ lesson.video }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        </div>
+                        <div class="section-1 section {{ object.slug }}">
+                            <h1>Информация к уроку</h1>
+                            <h3>1. Lorem, ipsum dolor.</h3>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa culpa rerum, eaque fugit deserunt ullam expedita laudantium cum assumenda accusantium, sequi quisquam autem perspiciatis nulla labore nobis velit reiciendis provident at sint dolores. Repellendus quas voluptas ipsa quo obcaecati minus nam fuga quaerat. Facere quas ipsam eaque? Doloremque quos itaque aperiam non harum corporis dolorem culpa autem tempora, quisquam laborum odit minus quidem iusto? Repellendus aperiam tempora numquam nam rerum corrupti sequi nihil rem odio? Blanditiis ex nihil voluptatem? Est!</p>
+                            <h3>2. Lorem, ipsum dolor.</h3>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis doloremque labore quo delectus exercitationem magnam fugiat esse accusantium tempora suscipit placeat quaerat incidunt aliquid ex quisquam voluptas obcaecati dolorum voluptatem, vel enim aspernatur vero consectetur. Ad doloremque fuga repellendus totam deserunt ipsam officia accusamus nostrum accusantium illo iusto ratione quis aliquid id nemo repudiandae quos aspernatur voluptate consequuntur, et voluptatibus tempore blanditiis? Dolores laboriosam numquam voluptatum accusantium vitae id praesentium ex temporibus ut tempore molestiae error, iste inventore dicta at assumenda aut suscipit quaerat quis corrupti asperiores! Similique reiciendis eius nam odio velit? Repudiandae, cumque itaque minus placeat explicabo earum!</p>
+                            <h3>3. Lorem, ipsum dolor.</h3>
+                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptas facere nemo veniam unde deserunt possimus, assumenda tempora aliquid iste doloribus porro sunt inventore quos nam beatae dolorem sequi nisi debitis dolor itaque ipsum dignissimos, quo ducimus. Hic, voluptatem? Illum consectetur voluptates, illo et expedita assumenda eaque ratione distinctio officiis amet?</p>
+                        </div>
+                    {% else %}
+                        <div class="section-1 section {{ object.slug }}">
+                            <h1>Курс {{ course.title }} является платным.</h1>
+                            <h4>Чтобы смотреть уроки по этому курсу приобретите <a href="">подписку</a></h4>
+                        </div>
+                    {% endif %}
                 </div>
-                <div class="section-1 section {{ object.slug }}">
-                    <h1>Информация к уроку</h1>
-                    <h3>1. Lorem, ipsum dolor.</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa culpa rerum, eaque fugit deserunt ullam expedita laudantium cum assumenda accusantium, sequi quisquam autem perspiciatis nulla labore nobis velit reiciendis provident at sint dolores. Repellendus quas voluptas ipsa quo obcaecati minus nam fuga quaerat. Facere quas ipsam eaque? Doloremque quos itaque aperiam non harum corporis dolorem culpa autem tempora, quisquam laborum odit minus quidem iusto? Repellendus aperiam tempora numquam nam rerum corrupti sequi nihil rem odio? Blanditiis ex nihil voluptatem? Est!</p>
-                    <h3>2. Lorem, ipsum dolor.</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis doloremque labore quo delectus exercitationem magnam fugiat esse accusantium tempora suscipit placeat quaerat incidunt aliquid ex quisquam voluptas obcaecati dolorum voluptatem, vel enim aspernatur vero consectetur. Ad doloremque fuga repellendus totam deserunt ipsam officia accusamus nostrum accusantium illo iusto ratione quis aliquid id nemo repudiandae quos aspernatur voluptate consequuntur, et voluptatibus tempore blanditiis? Dolores laboriosam numquam voluptatum accusantium vitae id praesentium ex temporibus ut tempore molestiae error, iste inventore dicta at assumenda aut suscipit quaerat quis corrupti asperiores! Similique reiciendis eius nam odio velit? Repudiandae, cumque itaque minus placeat explicabo earum!</p>
-                    <h3>3. Lorem, ipsum dolor.</h3>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptas facere nemo veniam unde deserunt possimus, assumenda tempora aliquid iste doloribus porro sunt inventore quos nam beatae dolorem sequi nisi debitis dolor itaque ipsum dignissimos, quo ducimus. Hic, voluptatem? Illum consectetur voluptates, illo et expedita assumenda eaque ratione distinctio officiis amet?</p>
-                </div>
-            </div>
             <div class="page-aside section {{ object.slug }}">
                 <div class="aside-title">
                     <h2>Навигация по курсу</h2>
@@ -43,13 +50,26 @@
                         <h4>О курсе</h4>
                         </div>
                     </a>
-                    {% for el in lessons %}
-                        <a href="{{ el.get_absolute_url }}">
-                            <div class="lesson {% if request.resolver_match.kwargs.lesson_slug == el.slug %}active{% endif %}">
-                            <h4>{{ el.number }}: {{ el.title }}</h4>
-                            </div>
-                        </a>
-                    {% endfor %}
+
+                    {% if not course.is_free and user.is_authenticated == False %}
+                        <h3 style='text-align:center; margin: 8px 0; font-weight: 500; color: var(--color-alert)'>Вам необходимо пройти регистрацию!</h3>
+                        <a href="{% url 'reg' %}"><div class="lesson" style='border-bottom: 2px solid var(--color-primary); display:flex; justify-content: center'><span>Зарегистрироваться</span></div></a>
+
+                        <h3 style='text-align:center; margin: 16px 0; font-weight: 500'>Уже есть аккаунт?</h3>
+                        <a href="{% url 'user' %}"><div class="lesson" style='display:flex; justify-content: center'>Войти</div></a></p>
+                    {% else %}
+                        {% if course.is_free or user.profile.sub_plan == 'full' %}
+                            {% for el in lessons %}
+                                <a href="{{ el.get_absolute_url }}">
+                                    <div class="lesson {% if request.path == el.get_absolute_url %}active{% endif %}">
+                                        <h4>{{ el.number }}: {{ el.title }}</h4>
+                                    </div>
+                                </a>
+                            {% endfor %}
+                        {% else %}
+                            <div class="lesson" style='padding: 16px'><p>Данный курс является платным, необходимо приобрести <a href="#">подписку</a></p></div>
+                        {% endif %}    
+                    {% endif %}
                 </div>
             </div>
         </div>

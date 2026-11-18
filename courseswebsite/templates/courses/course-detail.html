@@ -47,13 +47,26 @@
                         <h4>О курсе</h4>
                         </div>
                     </a>
-                    {% for el in lessons %}
-                        <a href="{{ el.get_absolute_url }}">
-                            <div class="lesson">
-                            <h4>{{ el.number }}: {{ el.title }}</h4>
-                            </div>
-                        </a>
-                    {% endfor %}
+
+                    {% if not course.is_free and user.is_authenticated == False %}
+                        <h3 style='text-align:center; margin: 8px 0; font-weight: 500; color: var(--color-alert)'>Вам необходимо пройти регистрацию!</h3>
+                        <a href="{% url 'reg' %}"><div class="lesson" style='border-bottom: 2px solid var(--color-primary); display:flex; justify-content: center'><span>Зарегистрироваться</span></div></a>
+
+                        <h3 style='text-align:center; margin: 16px 0; font-weight: 500'>Уже есть аккаунт?</h3>
+                        <a href="{% url 'user' %}"><div class="lesson" style='display:flex; justify-content: center'>Войти</div></a></p>
+                    {% else %}
+                        {% if course.is_free or user.profile.sub_plan == 'full' %}
+                            {% for el in lessons %}
+                                <a href="{{ el.get_absolute_url }}">
+                                    <div class="lesson">
+                                        <h4>{{ el.number }}: {{ el.title }}</h4>
+                                    </div>
+                                </a>
+                            {% endfor %}
+                        {% else %}
+                            <div class="lesson" style='padding: 16px'><p>Данный курс является платным, необходимо приобрести <a href="#">подписку</a></p></div>
+                        {% endif %}    
+                    {% endif %}
                 </div>
             </div>
         </div>

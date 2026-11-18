@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block title %}Кабинет пользователя{% endblock %}
+{% block main %}
+<div class="presentation-section-bg">
+    <div class="presentation-section">
+        <div class="presentation-text">
+            <h1>Добро пожаловать в Ваш личный кабинет!</h1>
+            <p>Здесь вы можете просмотреть, а также редактировать информацию о себе.</p>
+        </div>
+        <div class="presentation-sticker">
+            <img src="{% static 'images/profile-illustration.svg' %}" alt="Профиль пользователя с аватаром и настройками">
+        </div>
+    </div>
+</div>
+<div class='profile-section-container'>
+    <div class='profile-section'>
+        <div class='section-info'>
+            <div class='profile-image'>
+                <img src="{{ user.profile.img.url }}" alt="Фото пользователя {{ user.username }}">
+            </div>
+            <div class="vert-line"></div>
+            <div class='profile-info'>
+                <h2>Личная информация</h2>
+                <div class="profile-info-details">
+                    <p><b>Логин: </b>{{ user.username }}</p>
+                    <p><b>Email: </b>{{ user.email }}</p>
+                    <p><b>Пол: </b>{{ user.profile.get_sex_display }}</p>
+                </div>
+            </div>
+            <div class="vert-line"></div>
+            <div class="profile-subscription">
+                <h2>Подписка</h2>
+            </div>
+        </div>
+        <div class="section-update">
+            <h2>Актуализация данных пользователя</h2>
+            <form method='post' enctype='multipart/form-data' class='form-1'>
+                {% csrf_token %}
+                {{ update_user_form.as_p }}
+                {% for field in profile_form %}
+                    {% if field.name == "privacy" %}
+                        <p class='privacy'>
+                            <label class="privacy-label" for="{{ field.id_for_label }}">
+                                {{ field }}
+                                <span>{{ field.label }}</span>
+                            </label>
+                            {{ field.errors }}
+                        </p>
+                    {% else %}
+                        <p>
+                            {{ field.label_tag }}
+                            {{ field }}
+                        </p>
+                    {% endif %}
+                {% endfor %}
+                <button type="submit">Обновить</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

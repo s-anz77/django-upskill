@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">Личный кабинет</title>
+  <desc id="desc">Стикер профиля пользователя с карточкой аккаунта, аватаром и настройками</desc>
+
+  <!-- Background accents -->
+  <path d="M87 93c34-35 87-49 134-38 22 5 39 18 52 34-15 26-20 51-14 75-28 25-63 39-102 35-40-5-73-30-87-65-5-13 2-30 17-41Z" fill="#1A3D3C"/>
+  <circle cx="413" cy="115" r="43" fill="#2C685B"/>
+  <path d="M425.1 110.1L425.5 111.4L430.3 110.0L430.3 120.0L425.5 118.6L425.1 119.9L425.0 120.1L424.4 121.3L428.7 123.7L421.7 130.7L419.3 126.4L418.1 127.0L417.9 127.1L416.6 127.5L418.0 132.3L408.0 132.3L409.4 127.5L408.1 127.1L407.9 127.0L406.7 126.4L404.3 130.7L397.3 123.7L401.6 121.3L401.0 120.1L400.9 119.9L400.5 118.6L395.7 120.0L395.7 110.0L400.5 111.4L400.9 110.1L401.0 109.9L401.6 108.7L397.3 106.3L404.3 99.3L406.7 103.6L407.9 103.0L408.1 102.9L409.4 102.5L408.0 97.7L418.0 97.7L416.6 102.5L417.9 102.9L418.1 103.0L419.3 103.6L421.7 99.3L428.7 106.3L424.4 108.7L425.0 109.9Z" fill="#43B19A" transform="translate(413 115) scale(1.15) translate(-413 -115)"/>
+  <circle cx="413" cy="115" r="7" fill="#2C685B"/>
+
+  <!-- Account card -->
+  <rect x="102" y="119" width="308" height="302" rx="24" fill="#0F2423" stroke="#43B19A" stroke-width="5"/>
+  <path d="M102 143a24 24 0 0 1 24-24h260a24 24 0 0 1 24 24v35H102v-35Z" fill="#1A3D3C"/>
+  <circle cx="128" cy="150" r="5" fill="#43B19A"/>
+  <circle cx="146" cy="150" r="5" fill="#3B8C7B"/>
+  <circle cx="164" cy="150" r="5" fill="#2C685B"/>
+  <path d="M331 150h49" stroke="#3B8C7B" stroke-linecap="round" stroke-width="5"/>
+
+  <!-- Avatar -->
+  <circle cx="256" cy="250" r="61" fill="#2C685B"/>
+  <path d="M208 248c0-27 21-48 48-48s48 21 48 48v11c0 27-21 48-48 48s-48-21-48-48v-11Z" fill="#F0FFFC"/>
+  <path d="M206 247c-3-31 16-56 44-62 21-5 43 4 54 21 5 8 8 18 7 29-13-2-24-8-32-18-12 12-35 18-73 18v12Z" fill="#3B8C7B"/>
+  <path d="M226 254h8m44 0h8m-43 10 4 9h9m-18 12c10 8 22 8 32 0" fill="none" stroke="#060E0E" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+  <circle cx="230" cy="255" r="2.5" fill="#060E0E"/>
+  <circle cx="282" cy="255" r="2.5" fill="#060E0E"/>
+  <path d="M186 351c7-28 30-43 70-43s63 15 70 43v28H186v-28Z" fill="#3B8C7B"/>
+  <path d="M219 319c10 12 22 18 37 18s27-6 37-18l14 60h-102l14-60Z" fill="#43B19A"/>
+
+  <!-- Profile details -->
+  <rect x="139" y="393" width="120" height="8" rx="4" fill="#3B8C7B"/>
+  <rect x="270" y="393" width="80" height="8" rx="4" fill="#2C685B"/>
+
+  <!-- Edit badge -->
+  <circle cx="369" cy="344" r="44" fill="#43B19A" stroke="#0F2423" stroke-width="8"/>
+  <path d="m350 359 4-17 25-25a8 8 0 0 1 11 0l3 3a8 8 0 0 1 0 11l-25 25-18 3Zm7-14 11 11m10-32 10 10" fill="none" stroke="#060E0E" stroke-linecap="round" stroke-linejoin="round" stroke-width="5" transform="translate(-2.5 4)"/>
+
+  <!-- Grounding shadow -->
+  <path d="M73 451h366" stroke="#2C685B" stroke-linecap="round" stroke-width="8"/>
+</svg>

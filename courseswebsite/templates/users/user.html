@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block title %}Страница авторизации{% endblock %}
+{% block main %}
+<div class="presentation-section-bg">
+    <div class="presentation-section">
+        <div class="presentation-text">
+            <h1>Добро пожаловать на страницу авторизации!</h1>
+            <p>Войдите в уже существую учётную запись.</p>
+        </div>
+        <div class="presentation-sticker">
+            <img src="{% static 'images/login-illustration.svg' %}" alt="Карточка входа в аккаунт пользователя">
+        </div>
+    </div>
+</div>
+<div class="register-page">
+    <div class="register-section-container">
+        <div class="section-register">
+            <h1>Введите ваши данные</h1>
+            <form method="POST" class="form-1">
+                {% csrf_token %}
+                {% for field in form %}
+                    <p>
+                        {{ field.label_tag }}
+                        {{ field }}
+                        {% if field.errors %}
+                            {{ field.errors }}
+                        {% endif %}
+                    </p>
+                {% endfor %}
+                <button type="submit" id='regBut'>Войти</button>
+                <span class='altbut'>Забыли пароль? <a class='alt' href="{% url 'pass-reset' %}">Восстановить пароль</a></span>
+                <span class='altbut'>Впервые на сайте? <a class='alt' href="{% url 'reg' %}">Зарегистрироваться</a></span>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block title %}Страница регистрации{% endblock %}
+{% block main %}
+<div class="presentation-section-bg">
+    <div class="presentation-section">
+        <div class="presentation-text">
+            <h1>Добро пожаловать на страницу регистрации!</h1>
+            <p>Создайте учетную запись прямо сейчас, чтобы открыть для себя полный функционал сайта!</p>
+        </div>
+        <div class="presentation-sticker">
+            <img src="{% static 'images/registration-illustration.svg' %}" alt="Карточка регистрации нового пользователя">
+        </div>
+    </div>
+</div>
+<div class="register-page">
+    <div class="register-section-container">
+        <div class="section-register">
+            <h1>Введите ваши данные</h1>
+            <form method="POST" class="form-1" autocomplete="off">
+                {% csrf_token %}
+                {% for field in form %}
+                    <p>
+                        {{ field.label_tag }}
+                        {{ field }}
+                        {% if field.errors %}
+                            {% for error in field.errors %}
+                                <span class="error-message">{{ error }}</span>
+                            {% endfor %}
+                        {% endif %}
+                    </p>
+                {% endfor %}
+                <button type="submit" id='regBut'>Зарегистрироваться</button>
+                <span class='altbut'>Уже зарегистрированы? <a class='alt' href="{% url 'user' %}">Войти в личный кабинет</a></span>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
