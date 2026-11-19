@@ -1,0 +1,78 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block title %}Тарифы{% endblock %}
+
+{% block main %}
+<div class="home-page-content">
+    <div class="presentation-section-bg">
+        <div class="presentation-section">
+            <div class="presentation-text">
+                <h1>Добро пожаловать на страницу с тарифами!</h1>
+                <p>Здесь вы можете ознакомиться с информацией о тарифах, а также сменить ваш план подписки.</p>
+            </div>
+            <div class="presentation-sticker">
+                <img src="{% static 'images/subscription-illustration.svg' %}" alt="Иллюстрация тарифов и подписки">
+            </div>
+        </div>
+    </div>
+    <div class="courses-section-bg">
+        <div class='courses-section'>
+            <div class="section-heading" style='justify-content: center'>
+                <h1 style='margin: 1em 0'>Выберите тарифный план</h1>
+            </div>
+            <div class='courses-grid' style='grid-template-columns: repeat(2, 1fr); grid-gap: 2em'>
+                <div class="course-card plan-free {% if user.profile.sub_plan == 'free' %}plan-active{% endif %}">
+                    <a>
+                        <div class='card-image' style='height: auto; width: 100%'>
+                            <img style='height: auto; width: 100%' src="{% static 'images/subscription-free.png' %}" alt="">
+                        </div>
+                    </a>
+                    <div class='card-body'>
+                        <h2 style='text-align:center'>Бесплатный пакет{% if user.profile.sub_plan == 'free' %} (Активен){% endif %}</h2>
+                        <hr style='margin: 8px 0; border: 1px solid var(--color-background)'>
+                        <h3>Цена: $0</h3>
+                        <hr style='margin: 8px 0; border: 1px solid var(--color-background)'>
+                        {% if user.profile.sub_plan == 'full' %}
+                            <form method="POST" action="{% url 'change-plan' %}" class='plan-change-form'>
+                                {% csrf_token %}
+                                <input type="hidden" name="plan" value="free">
+                                <button type="submit">Выбрать</button>
+                            </form>
+                        {% else %}
+                            <form class='plan-change-form'>
+                                <button type="button" class='but-inactive'>Выбрано</button>
+                            </form>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="course-card {% if user.profile.sub_plan == 'full' %}plan-active{% endif %}">
+                    <a>
+                        <div class='card-image' style='height: auto; width: 100%'>
+                            <img style='height: auto; width: 100%' src="{% static 'images/subscription-full.png' %}" alt="">
+                        </div>
+                    </a>
+                    <div class='card-body'>
+                        <h2 style='text-align:center'>Полный пакет {% if user.profile.sub_plan == 'full' %} (Активен){% endif %}</h2>
+                        <hr style='margin: 8px 0; border: 1px solid var(--color-background)'>
+                        <h3>Цена: $15</h3>
+                        <hr style='margin: 8px 0; border: 1px solid var(--color-background)'>
+                        {% if user.profile.sub_plan == 'free' %}
+                            <form method="POST" action="{% url 'change-plan' %}" class='plan-change-form'>
+                                {% csrf_token %}
+                                <input type="hidden" name="plan" value="full">
+                                <button type="submit">Купить*</button>
+                            </form>
+                        {% else %}
+                            <form class='plan-change-form'>
+                                <button type="button" class='but-inactive'>Куплено</button>
+                            </form>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

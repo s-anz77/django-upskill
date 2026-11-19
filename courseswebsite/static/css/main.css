@@ -13,8 +13,15 @@
     --color-text: #F0FFFC;
     --color-text-muted: #ababab;
     --color-alert: #CD5B5B;
+    --color-alert-bg: hsl(0, 33%, 28%);
+
+    --color-transparent: rgba(255, 255, 255, 0);
 
     --width-main: 80%;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 a {
@@ -166,6 +173,14 @@ header .header .menu form button:hover svg {
     transition: all .25s ease;
 }
 
+#profilebut.full-plan svg {
+    border: 2px solid transparent;
+    border-radius: 9px;
+    background:
+        linear-gradient(var(--color-primary), var(--color-primary)) padding-box,
+        linear-gradient(100deg, #FAE0A5, #EF7973, #B888E8) border-box;
+}
+
 /*-------------------------------ВСПЛЫВАЮЩИЕ ПОДСКАЗКИ----------------------------*/
 
 a.hint::after,
@@ -177,7 +192,7 @@ a.hint::after,
     transform: translate(-50%, 4px);
     padding: 3px 5px;
     border-radius: 6px;
-    background: var(--primary);
+    background: var(--color-primary);
     color: var(--color-text);
     border: 1px solid var(--color-text);
     font-size: 12px;
@@ -257,7 +272,6 @@ main {
 
 .course-card .card-body .tag {
     position: absolute;
-    left: 2px;
     top: -24px;
     background-color: var(--color-surface);
     border: 2px solid var(--color-accent);
@@ -268,6 +282,16 @@ main {
     gap: 5px;
 }
 
+.course-card .card-body .tag:not(.not-free) {
+    left: 2px;
+}
+
+.course-card .card-body .tag.not-free {
+    right: 2px;
+    background-color: var(--color-alert-bg);
+    border: 2px solid var(--color-alert);
+}
+
 .course-card .card-body .tag .circle {
     height: 6px;
     width: 6px;
@@ -275,10 +299,18 @@ main {
     background-color: var(--color-accent);
 }
 
+.course-card .card-body .tag.not-free .circle {
+    background-color: var(--color-alert);
+}
+
 .course-card .card-body .tag span {
     color: var(--color-accent);
     font-size: 8px;
     font-weight: 800;
+}
+
+.course-card .card-body .tag.not-free span {
+    color: var(--color-alert);
 }
 
 .course-card .card-body h3 {
@@ -295,14 +327,52 @@ main {
     color: var(--color-text-muted);
 }
 
-.course-card:hover {
+.course-card:not(.plan-active, .plan-free):hover {
     transform: translateY(-3px);
     box-shadow: var(--color-surface) 0px 12px 30px;
     transition: all .25s ease;
 }
 
-.course-card:hover .card-image img {
+.course-card.plan-active {
+    box-shadow: var(--color-accent) 0px 0px 60px;
+}
+
+.course-card:not(.plan-active, .plan-free):hover .card-image img {
     transform: scale(1.05);
+    transition: all .25s ease;
+}
+
+/*--------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------*/
+
+/*--------------------------------------------------------------------------------*/
+/*------------------------------------PLANS PAGE----------------------------------*/
+/*--------------------------------------------------------------------------------*/
+
+.plan-change-form button {
+    width: 100%;
+    font-size: 24px;
+    background-color: var(--color-transparent);
+
+    border: 1px solid var(--color-primary);
+    border-radius: 9px 0;
+    transition: all .25s ease;
+}
+
+.plan-change-form button:not(.but-inactive) {
+    background: linear-gradient(to right, var(--color-surface), var(--color-accent-dark), var(--color-surface));
+    color: var(--color-text);
+}
+
+.plan-change-form button.but-inactive {
+    background: linear-gradient(to right, var(--color-panel), var(--color-surface), var(--color-panel));
+    color: var(--color-text-muted);
+}
+
+.plan-change-form button:not(.but-inactive):hover {
+    cursor: pointer;
+    box-shadow: 0px 0px 10px 0px var(--color-accent-bright);
     transition: all .25s ease;
 }
 
@@ -404,6 +474,7 @@ main .home-page-content .courses-section-bg .courses-section .section-heading a 
 }
 
 main .home-page-content .courses-section-bg .courses-section .section-heading a small {
+    font-size: 16px;
     font-weight: 300;
     margin-right: 3px;
 }
@@ -717,6 +788,7 @@ main .home-page-content .courses-section-bg .courses-section .section-heading a:
     align-items: center;
     background-color: #f0fffc77;
     border-radius: 9px 0;
+    width: 150px;
 }
 
 .profile-section-container .profile-section .section-info .profile-image img {
@@ -753,11 +825,30 @@ main .home-page-content .courses-section-bg .courses-section .section-heading a:
 .profile-section-container .profile-section .section-info .profile-subscription {
     display: flex;
     flex-direction: column;
-    justify-content: start;
+    justify-content: center;
+    width: auto;
+    position: relative;
 }
 
 .profile-section-container .profile-section .section-info .profile-subscription h2 {
     font-weight: 500;
+    width: 100%;
+    position: absolute;
+    top: 0;
+}
+
+.profile-section-container .profile-section .section-info .profile-subscription h1.gradient-text-1 {
+    background: linear-gradient(90deg, #43B19A, #F0FFFC);
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+}
+
+.profile-section-container .profile-section .section-info .profile-subscription h1.gradient-text-2 {
+    background: linear-gradient(100deg, #FAE0A5 0%, #EF7973 55%, #B888E8 100%);
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
 }
 
 .profile-section-container .profile-section .section-update {
@@ -933,8 +1024,8 @@ span.altbut a:hover {
 /*--------------------------------------------------------------------------------*/
 
 footer {
-    display: flex;
     width: 100%;
+    display: flex;
     justify-content: center;
     background-color: var(--color-primary);
     border-top: 10px solid var(--color-panel);
@@ -942,7 +1033,92 @@ footer {
 
 footer .footer-container {
     width: var(--width-main);
-    height: 200px;
-    display: flex;
-    align-items: center;
+    display: grid;
+    grid-template-columns: minmax(220px, 0.9fr) minmax(0, 1.5fr);
+    gap: clamp(2rem, 6vw, 6rem);
+    padding: 3.25rem 0 2.25rem;
+    box-sizing: border-box;
+}
+
+footer .footer-brand {
+    align-self: start;
+    padding-top: 0.2rem;
+}
+
+footer .footer-brand h2 {
+    color: var(--color-text);
+    font-size: clamp(2rem, 3vw, 2.6rem);
+    font-weight: 600;
+    letter-spacing: -0.04em;
+}
+
+footer .footer-brand p {
+    color: var(--color-text);
+    font-size: 0.95rem;
+    line-height: 1.8;
+    margin-top: 1rem;
+}
+
+footer .footer-brand .footer-kicker {
+    color: var(--color-text-muted);
+    margin-top: 0.15rem;
+}
+
+footer .footer-info h3 {
+    color: var(--color-text);
+    font-size: 1.25rem;
+    font-weight: 500;
+}
+
+footer .footer-accent-line {
+    height: 3px;
+    margin: 0.9rem 0 1.25rem;
+    border-radius: 3px;
+    background: linear-gradient(90deg, var(--color-accent-dark), var(--color-accent-bright), var(--color-alert));
+}
+
+footer .footer-info > p,
+footer .footer-demo-note p {
+    color: var(--color-text);
+    font-size: 0.92rem;
+    line-height: 1.8;
+}
+
+footer .footer-demo-note {
+    margin-top: 1.25rem;
+    padding: 1rem 1.2rem;
+    background-color: var(--color-background);
+    border: 1px solid var(--color-surface);
+    border-radius: 9px 0;
+}
+
+footer .footer-video-credit {
+    margin-top: 1.1rem;
+    color: var(--color-text-muted);
+    font-size: 0.88rem;
+    line-height: 1.8;
+}
+
+footer .footer-video-credit a {
+    color: var(--color-accent-bright);
+    font-weight: 500;
+    text-decoration: underline;
+    text-decoration-color: var(--color-accent-dark);
+    text-underline-offset: 3px;
+}
+
+footer .footer-video-credit a:hover {
+    color: var(--color-text);
+}
+
+@media (max-width: 760px) {
+    footer .footer-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 2.5rem 0 1.75rem;
+    }
+
+    footer .footer-brand p {
+        margin-top: 0.65rem;
+    }
 }

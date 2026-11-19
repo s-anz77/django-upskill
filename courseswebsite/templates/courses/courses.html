@@ -1,0 +1,95 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block title %}Все курсы{% endblock %}
+
+{% block main %}
+<div class="home-page-content">
+    <div class="presentation-section-bg">
+        <div class="presentation-section">
+            <div class="presentation-text">
+                <h1>Добро пожаловать на страницу с курсами!</h1>
+                <p>Ниже вы найдете все курсы, представленные на нашем сайте.</p>
+            </div>
+            <div class="presentation-sticker">
+                <img src="{% static 'images/full-stack-illustration.svg' %}" alt="Разработчик за ноутбуком">
+            </div>
+        </div>
+    </div>
+    <div class="courses-section-bg">
+        <div class='courses-section'>
+            <h1 style='text-align:center; font-weight:500'>Все видеокурсы</h1>
+
+            <div class="section-heading">
+                <h2 style='text-align:center; font-weight:400'>Бесплатные</h2>
+            </div>
+            <div class='courses-grid'>
+                {% for course in courses %}
+                {% if course.is_free == True %}
+                    <div class="course-card">
+                        <a href="{{ course.get_absolute_url }}">
+                            <div class='card-image'>
+                                {% if course.image %}
+                                    <img src="{{ course.image.url }}" alt="{{ course.title }}">
+                                {% else %}
+                                    <img src="{{ course.image.url }}" alt="{{ course.title }}">
+                                {% endif %}
+                            </div>
+                        </a>
+                        <div class='card-body'>
+                            <a class="tag" href="#">
+                                <div class="circle"></div>
+                                <span>{{ course.category|upper }}</span>
+                            </a>
+                            {% if course.is_free == False %}
+                            <a class="tag not-free" href="#">
+                                <div class="circle"></div>
+                                <span>ПЛАТНЫЙ</span>
+                            </a>
+                            {% endif %}
+                            <h3>{{ course.title }}</h3>
+                            <p>{{ course.description }}</p>
+                        </div>
+                    </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+
+            <div class="section-heading" style='margin-top: 2em'>
+                <h2 style='text-align:center; font-weight:500'>Платные</h2>
+            </div>
+            <div class='courses-grid'>
+                {% for course in courses %}
+                {% if course.is_free == False %}
+                    <div class="course-card">
+                        <a href="{{ course.get_absolute_url }}">
+                            <div class='card-image'>
+                                {% if course.image %}
+                                    <img src="{{ course.image.url }}" alt="{{ course.title }}">
+                                {% else %}
+                                    <img src="{{ course.image.url }}" alt="{{ course.title }}">
+                                {% endif %}
+                            </div>
+                        </a>
+                        <div class='card-body'>
+                            <a class="tag" href="#">
+                                <div class="circle"></div>
+                                <span>{{ course.category|upper }}</span>
+                            </a>
+                            {% if course.is_free == False %}
+                            <a class="tag not-free" href="#">
+                                <div class="circle"></div>
+                                <span>ПЛАТНЫЙ</span>
+                            </a>
+                            {% endif %}
+                            <h3>{{ course.title }}</h3>
+                            <p>{{ course.description }}</p>
+                        </div>
+                    </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

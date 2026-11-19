@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">Тарифы и подписка</title>
+  <desc id="desc">Участница выбирает подписку: рядом с ней карточки тарифов, отметка доступа и монеты</desc>
+
+  <!-- Floating plan cards -->
+  <rect x="54" y="95" width="156" height="111" rx="12" fill="#0F2423" stroke="#43B19A" stroke-width="4"/>
+  <circle cx="73" cy="114" r="4" fill="#43B19A"/>
+  <circle cx="89" cy="114" r="4" fill="#3B8C7B"/>
+  <path d="M75 139h73M75 155h48M75 171h91" stroke="#3B8C7B" stroke-width="5" stroke-linecap="round"/>
+  <rect x="325" y="81" width="139" height="133" rx="13" fill="#1A3D3C" stroke="#3B8C7B" stroke-width="4"/>
+  <path d="M350 116h78" stroke="#F0FFFC" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="358" cy="151" r="7" fill="#43B19A"/><path d="m354 151 3 3 6-7" fill="none" stroke="#060E0E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M374 151h53M358 177h69" stroke="#3B8C7B" stroke-width="5" stroke-linecap="round"/>
+
+  <!-- Premium access badge -->
+  <circle cx="260" cy="88" r="34" fill="#43B19A"/>
+  <path d="m260 65 7 14 16 2-12 11 3 16-14-8-14 8 3-16-12-11 16-2 7-14Z" fill="#F0FFFC"/>
+
+  <!-- Person -->
+  <path d="M211 270c8-34 31-54 66-59l37-4c34 3 61 19 77 48l34 67-48 27-24-39 2 108H185l17-127Z" fill="#3B8C7B"/>
+  <path d="M237 241c-17 18-26 45-30 78l-13 55h50l19-67-26-66Z" fill="#2C685B"/>
+  <path d="M314 239c20 8 35 25 46 49l28 46-37 20-43-60 6-55Z" fill="#43B19A"/>
+  <path d="M253 202h42v54c0 12-9 21-21 21s-21-9-21-21v-54Z" fill="#3B8C7B"/>
+  <path d="M241 157c0-23 18-41 41-41h9c24 0 42 18 42 42v33c0 26-18 43-42 43h-8c-24 0-42-17-42-43v-34Z" fill="#F0FFFC"/>
+  <path d="M240 169c-9-26 2-54 23-65 17-9 39-7 53 5 12 10 18 24 17 43-7-7-14-10-22-12-6 13-19 19-35 17-5 16-18 24-36 25v-13Z" fill="#2C685B"/>
+  <path d="M325 163c11-2 19 6 18 17-1 10-8 17-17 17" fill="#F0FFFC"/>
+  <path d="M263 181h8m22 0h8m-29 8-3 13 8 2m-3 10c7 5 15 5 22 0" fill="none" stroke="#060E0E" stroke-width="2.5" stroke-linecap="round"/>
+  <circle cx="267" cy="181" r="2.4" fill="#060E0E"/><circle cx="297" cy="181" r="2.4" fill="#060E0E"/>
+
+  <!-- Membership card in hand -->
+  <path d="M330 310c17 2 32 10 45 24l23 25-23 21-39-29-28-5 22-36Z" fill="#2C685B"/>
+  <rect x="361" y="332" width="105" height="67" rx="9" transform="rotate(-8 361 332)" fill="#43B19A" stroke="#F0FFFC" stroke-width="3"/>
+  <path d="m386 366 10 10 20-24" fill="none" stroke="#F0FFFC" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M431 361h18" stroke="#1A3D3C" stroke-width="4" stroke-linecap="round"/>
+
+  <!-- Desk and small coin stack -->
+  <path d="M31 438h451v14H31z" fill="#2C685B"/>
+  <ellipse cx="109" cy="426" rx="24" ry="8" fill="#43B19A"/><path d="M85 412c0-5 11-9 24-9s24 4 24 9v14c0 5-11 9-24 9s-24-4-24-9v-14Z" fill="#3B8C7B"/>
+  <ellipse cx="109" cy="412" rx="24" ry="8" fill="#43B19A" stroke="#F0FFFC" stroke-width="2"/>
+  <path d="M104 408h10m-5-4v16" stroke="#F0FFFC" stroke-width="2" stroke-linecap="round"/>
+</svg>

@@ -22,8 +22,9 @@
             </div>
             <div class="navbar">
                 <a href="{% url 'home' %}" class='lines {% if request.resolver_match.url_name == 'home' %}active{% endif %}'>ГЛАВНАЯ</a>
-                <a href="#" class='lines'>ВИДЕОКУРСЫ</a>
-                <a href="#" class='lines'>ПРО НАС</a>
+                <a href="{% url 'courses' %}" class='lines {% if request.resolver_match.url_name == 'courses' %}active{% endif %}'>ВИДЕОКУРСЫ</a>
+                <a href="{% url 'sub' %}" class='lines {% if request.resolver_match.url_name == 'sub' %}active{% endif %}'>ТАРИФЫ</a>
+                <a href="#footer" class='lines'>ПРО НАС</a>
                 {% if user.is_superuser %}
                     <a href="/admin/" class='lines'>АДМИНКА</a>
                 {% endif %}
@@ -36,7 +37,7 @@
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="24px" width="24px"><path d="M12,21V19h7V5H12V3h7q0.83,0 1.41,0.59T21,5V19q0,0.82-0.59,1.41T19,21H12Zm-2-4L8.63,15.55L11.18,13H3V11h8.18L8.63,8.45L10,7l5,5l-5,5Z"/></svg>
                     </a>
                 {% else %}
-                    <a id='profilebut' data-tooltip="Профиль" href="{% url 'profile' %}" class='hint {% if request.resolver_match.url_name == 'profile' %}active{% endif %}'>
+                    <a id='profilebut' class='{% if user.profile.sub_plan == 'full' %}full-plan{% endif %}' data-tooltip="Профиль" href="{% url 'profile' %}" class='hint {% if request.resolver_match.url_name == 'profile' %}active{% endif %}'>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 26" height="26px" width="26px" fill="hsl(0, 0%, 48%)"><g transform="scale(1.1)"><path d="M9.18,10.83Q8,9.65 8,8T9.18,5.18T12,4t2.83,1.18T16,8t-1.17,2.82T12,12T9.18,10.83ZM4,20V17.2q0-0.85 0.44-1.56q0.44-0.71 1.16-1.09q1.55-0.78 3.15-1.16T12,13t3.25,0.39t3.15,1.16q0.72,0.38 1.16,1.09T20,17.2V20H4Zm2-2H18V17.2q0-0.27-0.14-0.5q-0.14-0.22-0.36-0.35q-1.35-0.68-2.72-1.01T12,15T9.23,15.34T6.5,16.35Q6.28,16.48 6.14,16.7Q6,16.93 6,17.2V18Zm7.41-8.59Q14,8.82 14,8T13.41,6.59T12,6T10.59,6.59Q10,7.18 10,8t0.59,1.41T12,10t1.41-0.59ZM12,8Zm0,10Z"/></g></svg>
                     </a>
 
@@ -55,9 +56,22 @@
         {% block main %}{% endblock %}
     </main>
 
-    <footer>
+    <footer id='footer'>
         <div class="footer-container">
-            <h4>Все права защищены &copy;</h4>
+            <div class="footer-brand">
+                <h2>UpSkill</h2>
+                <p class="footer-kicker">Проект для портфолио</p>
+                <p>Учебный сайт с курсами по программированию.<br>Создан в некоммерческих целях.</p>
+            </div>
+            <section class="footer-info" aria-labelledby="footer-info-title">
+                <h3 id="footer-info-title">Данные и тарифы</h3>
+                <div class="footer-accent-line" aria-hidden="true"></div>
+                <p>Данные, указанные при регистрации, используются для создания и работы учётной записи. Сайт не передаёт персональные данные третьим лицам, кроме случаев, предусмотренных законодательством РФ.</p>
+                <div class="footer-demo-note">
+                    <p>Система оплаты на сайте не подключена. Цена платного тарифа указана исключительно для примера. Кнопка «Купить*» имитирует выбор тарифа: она не оформляет заказ или подписку и не инициирует оплату.</p>
+                </div>
+                <p class="footer-video-credit">Видеоуроки не являются материалами автора сайта. Они взяты из бесплатных курсов на YouTube-каналах <a href="https://www.youtube.com/@itproger" target="_blank" rel="noopener noreferrer">ITProger</a> и <a href="https://www.youtube.com/@gosha_dudar" target="_blank" rel="noopener noreferrer">Гоша Дударь</a>.</p>
+            </section>
         </div>
     </footer>
 </body>

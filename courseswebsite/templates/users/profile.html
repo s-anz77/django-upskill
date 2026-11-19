@@ -31,7 +31,9 @@
             </div>
             <div class="vert-line"></div>
             <div class="profile-subscription">
-                <h2>Подписка</h2>
+                <h2>Подписка:</h2>
+                {% if user.profile.sub_plan == 'free' %}<h1 class="gradient-text-1">FREE</h1>{% endif %}
+                {% if user.profile.sub_plan == 'full' %}<h1 class="gradient-text-2">FULL</h1>{% endif %}
             </div>
         </div>
         <div class="section-update">
@@ -55,7 +57,7 @@
                         </p>
                     {% endif %}
                 {% endfor %}
-                <button type="submit">Обновить</button>
+                <button type="submit" id='regBut'>Обновить</button>
             </form>
         </div>
     </div>

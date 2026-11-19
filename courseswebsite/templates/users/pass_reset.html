@@ -1,15 +1,25 @@
 {% extends "layout.html" %}
+{% load static %}
 
 {% block title %}Восстановление пароля{% endblock %}
+
 {% block main %}
-    <main class="registerMain">
-        <div class="register">
-            <h2>Восстановление пароля</h2>
-            <form method="POST" class="registerForm">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <button type="submit">Запросить новый пароль</button>
-            </form>
+<div class="home-page-content">
+    <div class="presentation-section-bg">
+        <div class="presentation-section">
+            <div class="presentation-text">
+                <h1>Забыли пароль?</h1>
+                <p>Введите ниже свою почту и мы отправим Вам письмо с подтверждением.</p>
+            </div>
+            <div class="presentation-sticker">
+                <img src="{% static 'images/password-reset-illustration.svg' %}" alt="Иллюстрация восстановления пароля">
+            </div>
         </div>
-    </main>
+    </div>
+    <div class="courses-section-bg">
+        <div class='courses-section'>
+            <h1 style='font-weight: 500; text-align:center'>Здесь должна быть форма восстановления пароля...</h1>
+        </div>
+    </div>
+</div>
 {% endblock %}

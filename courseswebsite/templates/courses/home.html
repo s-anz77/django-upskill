@@ -18,15 +18,19 @@
     </div>
     <div class="courses-section-bg">
         <div class='courses-section'>
-            <div class="section-heading">
-                <h2>Видеокурсы</h2>
-                <a href="#">
+            <div class="section-heading" style='margin-bottom: 0.5em'>
+                <h1 style='font-weight: 500'>Видеокурсы</h1>
+                <a href="{% url 'courses' %}">
                     <small>Все курсы</small>
                     <span>→</span>
                 </a>
             </div>
+
+            <div class="section-heading">
+                <h2 style='width: 100%;text-align:center; font-weight:400'>Топ бесплатных</h2>
+            </div>
             <div class='courses-grid'>
-                {% for course in courses %}
+                {% for course in free_courses %}
                     <div class="course-card">
                         <a href="{{ course.get_absolute_url }}">
                             <div class='card-image'>
@@ -42,6 +46,45 @@
                                 <div class="circle"></div>
                                 <span>{{ course.category|upper }}</span>
                             </a>
+                            {% if course.is_free == False %}
+                            <a class="tag not-free" href="#">
+                                <div class="circle"></div>
+                                <span>ПЛАТНЫЙ</span>
+                            </a>
+                            {% endif %}
+                            <h3>{{ course.title }}</h3>
+                            <p>{{ course.description }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <div class="section-heading" style='margin-top: 2em'>
+                <h2 style='width: 100%;text-align:center; font-weight:400'>Топ платных</h2>
+            </div>
+            <div class='courses-grid'>
+                {% for course in paid_courses %}
+                    <div class="course-card">
+                        <a href="{{ course.get_absolute_url }}">
+                            <div class='card-image'>
+                                {% if course.image %}
+                                    <img src="{{ course.image.url }}" alt="{{ course.title }}">
+                                {% else %}
+                                    <img src="{{ course.image.url }}" alt="{{ course.title }}">
+                                {% endif %}
+                            </div>
+                        </a>
+                        <div class='card-body'>
+                            <a class="tag" href="#">
+                                <div class="circle"></div>
+                                <span>{{ course.category|upper }}</span>
+                            </a>
+                            {% if course.is_free == False %}
+                            <a class="tag not-free" href="#">
+                                <div class="circle"></div>
+                                <span>ПЛАТНЫЙ</span>
+                            </a>
+                            {% endif %}
                             <h3>{{ course.title }}</h3>
                             <p>{{ course.description }}</p>
                         </div>

@@ -25,7 +25,7 @@ class Lesson(models.Model):
     video = models.CharField('URL Видеоурока', max_length=100)
 
     def __str__(self):
-            return self.title
+            return f'{self.course.slug} | #{self.number}: {self.title}'
 
     def get_absolute_url(self):
             return reverse('lesson-detail', kwargs={'slug': self.course.slug, 'lesson_slug': self.slug})

@@ -64,7 +64,7 @@
                                 </a>
                             {% endfor %}
                         {% else %}
-                            <div class="lesson" style='padding: 16px'><p>Данный курс является платным, необходимо приобрести <a href="#">подписку</a></p></div>
+                            <div class="lesson" style='padding: 16px'><p>Данный курс является платным, необходимо приобрести <a href="{% url 'sub' %}">подписку</a></p></div>
                         {% endif %}    
                     {% endif %}
                 </div>

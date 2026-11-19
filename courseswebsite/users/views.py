@@ -52,3 +52,17 @@ class CustomLoginView(LoginView):
         username = form.get_user().username
         messages.success(self.request, f'Приветствуем вас {username}!')
         return super().form_valid(form)
+
+def changePlan(request):
+    if request.method != 'POST':
+        return redirect('sub')
+
+    plan = request.POST.get('plan')
+    if plan not in ('free', 'full'):
+        return redirect('sub')
+
+    profile = request.user.profile
+    profile.sub_plan = plan
+    profile.save(update_fields=['sub_plan'])
+
+    return redirect('sub')
