@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from django.conf import settings
 
 class Course(models.Model):
     title = models.CharField('Название курса', max_length=120)
@@ -29,3 +30,19 @@ class Lesson(models.Model):
 
     def get_absolute_url(self):
             return reverse('lesson-detail', kwargs={'slug': self.course.slug, 'lesson_slug': self.slug})
+
+
+class LessonComments(models.Model):
+    text = models.TextField('Текст комментария')
+    lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE, verbose_name='К какому уроку?')
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name='Автор')
+
+    def __str__(self):
+        text = self.text[:20]
+        if len(self.text) > 20:
+            text += '…'
+        return f'{self.lesson.slug} | {self.author}: {text}'
+
+    class Meta:
+        verbose_name = 'Комментарий к уроку'
+        verbose_name_plural = 'Комментарии к урокам'

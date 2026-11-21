@@ -39,6 +39,32 @@
                             <h4>Чтобы смотреть уроки по этому курсу приобретите <a href="{% url 'sub' %}">подписку</a></h4>
                         </div>
                     {% endif %}
+                    <div class="section-1 section {{ object.slug }}">
+                        <h1>Написать комментарий</h1>
+                        {% if user.is_authenticated %}
+                            <form method="POST" class="form-1" autocomplete="off">
+                                {% csrf_token %}
+                                {{ form.text }}
+                                {{ form.text.errors }}
+                                <button type="submit" id="regBut">Отправить</button>
+                            </form>
+                        {% else %}
+                            <p style="color: indianred">
+                                Чтобы оставлять комментарии вам необходимо <a style="font-weight:400" href="{% url 'user' %}">авторизоваться</a>!
+                            </p>
+                        {% endif %}
+                    </div>
+                    <div class="section-1 section {{ object.slug }}">
+                        <h1>Комментарии к уроку</h1>
+                        {% for comment in comments %}
+                            <div class="comment">
+                                <h3>Комментарий от пользователя: {{ comment.author }}</h3>
+                                <p>{{ comment.text }}</p>
+                            </div>
+                        {% empty %}
+                            <h2>Комментариев пока нет...</h2>
+                        {% endfor %}
+                    </div>
                 </div>
             <div class="page-aside section {{ object.slug }}">
                 <div class="aside-title">

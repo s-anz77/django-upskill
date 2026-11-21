@@ -930,6 +930,16 @@ main .home-page-content .courses-section-bg .courses-section .section-heading a:
     margin-top: 2px;
 }
 
+#id_text {
+    resize: none;
+    background-color: var(--color-text-muted);
+    color: var(--color-primary);
+    padding: 8px;
+    border-radius: 9px 0;
+    font-weight: 500;
+    margin-top: 4px;
+}
+
 .form-1 button {
     background-color: var(--color-text-muted);
     color: var(--color-text);
@@ -943,6 +953,18 @@ main .home-page-content .courses-section-bg .courses-section .section-heading a:
 .form-1 .error-message {
     margin-top: 4px;
     color: var(--color-alert);
+}
+
+.comment {
+    background-color: var(--color-panel);
+    box-sizing: border-box;
+    padding: 1em 0;
+    margin-bottom: 1em;
+    border-radius: 9px 0;
+}
+
+.comment h3 {
+    margin-top: 0 !important;
 }
 
 /*--------------------------------------------------------------------------------*/
