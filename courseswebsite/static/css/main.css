@@ -181,6 +181,22 @@ header .header .menu form button:hover svg {
         linear-gradient(100deg, #FAE0A5, #EF7973, #B888E8) border-box;
 }
 
+/*-----------------------------------НИЖНИЙ НАВБАР--------------------------------*/
+
+.navbarbelowContainer {
+    background-color: var(--color-background);
+    display: none;
+    width: 100%;
+    justify-content: center;
+}
+
+.navbarbelowContainer .navbarbelow {
+    width: var(--width-main);
+    display: flex;
+    justify-content: space-around;
+    padding: 1em 0;
+}
+
 /*-------------------------------ВСПЛЫВАЮЩИЕ ПОДСКАЗКИ----------------------------*/
 
 a.hint::after,
@@ -1142,5 +1158,76 @@ footer .footer-video-credit a:hover {
 
     footer .footer-brand p {
         margin-top: 0.65rem;
+    }
+}
+
+
+/* Планшеты */
+@media (max-width: 1000px) {
+    :root {
+        --width-main: 90%;
+    }
+
+    header .header {
+        display: flex;
+        justify-content: space-between;
+    }
+    .navbar {
+        display: none !important;
+    }
+    .navbarbelowContainer {
+        display: flex;
+    }
+
+    .courses-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 760px) {
+    .presentation-section-bg .presentation-section {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: max-content;
+    }
+    .presentation-section-bg .presentation-section .presentation-text {
+        right: 0;
+        padding: 1em 0;
+    }
+    .presentation-section-bg .presentation-section .presentation-text h1,
+    .presentation-section-bg .presentation-section .presentation-text p {
+        text-align: center;
+    }
+    
+    .presentation-section-bg .presentation-section .presentation-sticker {
+        display: none;
+    }
+    .presentation-section-bg .presentation-section .presentation-sticker img {
+        height: 100px;
+        top:24px;
+    }
+    h1 {
+        font-size: 1.5em;
+    }
+}
+
+/* Телефоны */
+@media (max-width: 640px) {
+    :root {
+        --width-main: 94%;
+    }
+
+    .courses-grid,
+    .courses-grid.plans-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+@media (max-width: 440px) {
+    .navbarbelowContainer .navbarbelow {
+        flex-direction: column;
+        align-items: center;
+        gap: 1em;
     }
 }
