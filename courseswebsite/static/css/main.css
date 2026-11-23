@@ -46,7 +46,7 @@ body {
 
 header {
     width: 100%;
-    height: 80px;
+    height: 100px;
     display: flex;
     justify-content: center;
     background-color: var(--color-primary);
@@ -626,7 +626,7 @@ main .home-page-content .courses-section-bg .courses-section .section-heading a:
 
 .course-detail-page .page-main-bg .page-main .page-aside .lessons-list .lesson {
     border-top: 2px solid var(--color-primary);
-    height: 60px;
+    height: 80px;
     display: flex;
     padding: 0 20px;
     justify-content: start;
@@ -841,7 +841,7 @@ main .home-page-content .courses-section-bg .courses-section .section-heading a:
 .profile-section-container .profile-section .section-info .profile-subscription {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: start;
     width: auto;
     position: relative;
 }
@@ -849,8 +849,11 @@ main .home-page-content .courses-section-bg .courses-section .section-heading a:
 .profile-section-container .profile-section .section-info .profile-subscription h2 {
     font-weight: 500;
     width: 100%;
-    position: absolute;
-    top: 0;
+}
+
+.profile-section-container .profile-section .section-info .profile-subscription h1 {
+    font-weight: 500;
+    width: 100%;
 }
 
 .profile-section-container .profile-section .section-info .profile-subscription h1.gradient-text-1 {
@@ -1040,9 +1043,6 @@ main .home-page-content .courses-section-bg .courses-section .section-heading a:
     transition: all .25s ease;
 }
 
-span.altbut {
-    width: 500px;
-}
 
 span.altbut a {
     font-weight: 500;
@@ -1149,7 +1149,13 @@ footer .footer-video-credit a:hover {
     color: var(--color-text);
 }
 
-@media (max-width: 760px) {
+@media (max-width: 1070px) {
+    .course-detail-page .page-main-bg .page-main .page-aside .lessons-list .lesson h4 {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 768px) {
     footer .footer-container {
         grid-template-columns: 1fr;
         gap: 2rem;
@@ -1184,7 +1190,7 @@ footer .footer-video-credit a:hover {
     }
 }
 
-@media (max-width: 760px) {
+@media (max-width: 768px) {
     .presentation-section-bg .presentation-section {
         display: flex;
         justify-content: center;
@@ -1210,11 +1216,53 @@ footer .footer-video-credit a:hover {
     h1 {
         font-size: 1.5em;
     }
+    h2 {
+        font-size: 1em;
+    }
+    .course-detail-page .page-main-bg .page-main {
+        width: var(--width-main);
+        min-height: calc(100vh - 280px);
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        margin-top: 1em;
+    }
+
+    .course-detail-page .page-main-bg .page-main .page-aside {
+        border-radius: 9px 0 0 0;
+        border-bottom: none;
+        margin-bottom: 1em;
+    }
+
+    .course-detail-page .page-main-bg .page-main .page-aside .lessons-list .lesson h4 {
+        font-size: 16px;
+    }
 }
 
 .courses-grid.plans-grid {
     grid-template-columns: repeat(2, 1fr); 
     grid-gap: 2em;
+}
+
+@media (max-width: 700px) {
+    .page-header-sticker {
+        display: none !important;
+    }
+
+    .course-detail-page .page-header .page-header-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1em;
+    }
+
+    .course-detail-page .page-header .page-header-container h1 {
+        text-align: center;
+    }
+
+    #adminka-bot {
+        display: none;
+    }
 }
 
 /* Телефоны */
@@ -1223,10 +1271,63 @@ footer .footer-video-credit a:hover {
         --width-main: 94%;
     }
 
+    .course-detail-page .page-main-bg .page-main .page-aside .lessons-list .lesson {
+        height: 60px;
+    }
+
     .courses-grid,
     .courses-grid.plans-grid {
         grid-template-columns: minmax(0, 1fr);
     }
+    
+    .course-detail-page .page-header {
+        width: 100%;
+        height: auto;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        padding: 1em 0;
+    }
+
+    .profile-section-container .profile-section .section-info {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 1em;
+        display: flex;
+        align-items: start;
+        gap: 1em;
+        flex-wrap: wrap;
+    }
+
+    .profile-section-container .profile-section .section-info .vert-line {
+        display: none;
+    }
+
+    .profile-section-container .profile-section .section-info .profile-info {
+        width: auto;
+    }
+
+    .profile-section-container .profile-section .section-info .profile-image img {
+        height: 70px;
+        width: auto;
+        border-radius: 9px 0;
+    }
+
+    .profile-section-container .profile-section .section-info .profile-image {
+        box-sizing: border-box;
+        height: 75px;
+        width: 75px;
+    }
+
+    .profile-section-container .profile-section .section-info .profile-info h2 {
+        font-weight: 500;
+        position: relative;
+        top: 0;
+    }
+}
+
+#header-reg-bot {
+    display: none;
 }
 
 @media (max-width: 440px) {
@@ -1234,5 +1335,18 @@ footer .footer-video-credit a:hover {
         flex-direction: column;
         align-items: center;
         gap: 1em;
+    }
+    #header-reg {
+        display: none;
+    }
+    #header-reg-bot {
+        display: block;
+    }
+}
+
+@media (max-width: 360px) {
+    .profile-section-container .profile-section .section-info {
+        flex-direction: column;
+        align-items: center;
     }
 }
