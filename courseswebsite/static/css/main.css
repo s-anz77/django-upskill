@@ -1212,6 +1212,11 @@ footer .footer-video-credit a:hover {
     }
 }
 
+.courses-grid.plans-grid {
+    grid-template-columns: repeat(2, 1fr); 
+    grid-gap: 2em;
+}
+
 /* Телефоны */
 @media (max-width: 640px) {
     :root {
