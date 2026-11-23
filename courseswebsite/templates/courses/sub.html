@@ -43,11 +43,11 @@
                                 <input type="hidden" name="plan" value="free">
                                 <button type="submit">Выбрать</button>
                             </form>
-                        {% else if user.is_authenticated and user.profile.sub_plan == 'free'%}
+                        {% elif user.is_authenticated and user.profile.sub_plan == 'free'%}
                             <form class='plan-change-form'>
                                 <button type="button" class='but-inactive'>Выбрано</button>
                             </form>
-                        {% else if not user.is_authenticated %}
+                        {% elif not user.is_authenticated %}
                             <form class='plan-change-form'>
                                 <a href='{% url 'reg' %}'><button type="button">Получить</button></a>
                             </form>
@@ -72,11 +72,11 @@
                                 <input type="hidden" name="plan" value="full">
                                 <button type="submit">Купить*</button>
                             </form>
-                        {% else if user.is_authenticated and user.profile.sub_plan == 'full'%}
+                        {% elif user.is_authenticated and user.profile.sub_plan == 'full'%}
                             <form class='plan-change-form'>
                                 <button type="button" class='but-inactive'>Выбрано</button>
                             </form>
-                        {% else if not user.is_authenticated %}
+                        {% elif not user.is_authenticated %}
                             <form class='plan-change-form'>
                                 <button type="button" class='but-inactive'>Недоступно</button>
                             </form>
