@@ -9,7 +9,11 @@
         <div class="presentation-section">
             <div class="presentation-text">
                 <h1>Добро пожаловать на страницу с тарифами!</h1>
+                {% if user.is_authenticated %}
                 <p>Здесь вы можете ознакомиться с информацией о тарифах, а также сменить ваш план подписки.</p>
+                {% else %}
+                <p>Войдите в аккаунт или зарегистрируйтесь, чтобы получить доступ к тарифам.</p>
+                {% endif %}
             </div>
             <div class="presentation-sticker">
                 <img src="{% static 'images/subscription-illustration.svg' %}" alt="Иллюстрация тарифов и подписки">
@@ -22,26 +26,30 @@
                 <h1 style='margin: 1em 0'>Выберите тарифный план</h1>
             </div>
             <div class='courses-grid' style='grid-template-columns: repeat(2, 1fr); grid-gap: 2em'>
-                <div class="course-card plan-free {% if user.profile.sub_plan == 'free' %}plan-active{% endif %}">
+                <div class="course-card plan-free {% if user.is_authenticated and user.profile.sub_plan == 'free' %}plan-active{% endif %}">
                     <a>
                         <div class='card-image' style='height: auto; width: 100%'>
                             <img style='height: auto; width: 100%' src="{% static 'images/subscription-free.png' %}" alt="">
                         </div>
                     </a>
                     <div class='card-body'>
-                        <h2 style='text-align:center'>Бесплатный пакет{% if user.profile.sub_plan == 'free' %} (Активен){% endif %}</h2>
+                        <h2 style='text-align:center'>Бесплатный пакет{% if user.is_authenticated and user.profile.sub_plan == 'free' %} (Активен){% endif %}</h2>
                         <hr style='margin: 8px 0; border: 1px solid var(--color-background)'>
                         <h3>Цена: $0</h3>
                         <hr style='margin: 8px 0; border: 1px solid var(--color-background)'>
-                        {% if user.profile.sub_plan == 'full' %}
+                        {% if user.is_authenticated and user.profile.sub_plan == 'full' %}
                             <form method="POST" action="{% url 'change-plan' %}" class='plan-change-form'>
                                 {% csrf_token %}
                                 <input type="hidden" name="plan" value="free">
                                 <button type="submit">Выбрать</button>
                             </form>
-                        {% else %}
+                        {% else if user.is_authenticated and user.profile.sub_plan == 'free'%}
                             <form class='plan-change-form'>
                                 <button type="button" class='but-inactive'>Выбрано</button>
+                            </form>
+                        {% else if not user.is_authenticated %}
+                            <form class='plan-change-form'>
+                                <a href='{% url 'reg' %}'><button type="button">Получить</button></a>
                             </form>
                         {% endif %}
                     </div>
@@ -58,15 +66,19 @@
                         <hr style='margin: 8px 0; border: 1px solid var(--color-background)'>
                         <h3>Цена: $15</h3>
                         <hr style='margin: 8px 0; border: 1px solid var(--color-background)'>
-                        {% if user.profile.sub_plan == 'free' %}
+                        {% if user.is_authenticated and user.profile.sub_plan == 'free' %}
                             <form method="POST" action="{% url 'change-plan' %}" class='plan-change-form'>
                                 {% csrf_token %}
                                 <input type="hidden" name="plan" value="full">
                                 <button type="submit">Купить*</button>
                             </form>
-                        {% else %}
+                        {% else if user.is_authenticated and user.profile.sub_plan == 'full'%}
                             <form class='plan-change-form'>
-                                <button type="button" class='but-inactive'>Куплено</button>
+                                <button type="button" class='but-inactive'>Выбрано</button>
+                            </form>
+                        {% else if not user.is_authenticated %}
+                            <form class='plan-change-form'>
+                                <button type="button" class='but-inactive'>Недоступно</button>
                             </form>
                         {% endif %}
                     </div>
