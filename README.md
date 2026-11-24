@@ -11,7 +11,7 @@ A Django website for browsing online courses and lessons, with user accounts, le
 - Register, sign in, update a profile, and request a password reset.
 - Post comments on lessons while signed in.
 - Access free courses without a subscription.
-- Purchase the lifetime Full subscription in the user profile to unlock access to premium courses; the code changes the selected plan and does not implement payment processing.
+- Select the Full plan in the user profile to unlock access to premium courses; the code changes the selected plan and does not implement payment processing.
 - Lifetime Full access does not expire.
 - Manage course and lesson content through Django's admin site.
 
